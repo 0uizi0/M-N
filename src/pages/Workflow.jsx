@@ -88,14 +88,19 @@ export default function Workflow() {
   const [render, setRender] = useState(false);
   const [dataArr, setDataArr] = useState([]);
   const navigation = useNavigate();
+  const user_id = localStorage.getItem('user_id');
+
   const getAllWS = async () => {
     try {
-      const resGetAllWS = await fetch('http://localhost:8001/workspace', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      const resGetAllWS = await fetch(
+        `http://localhost:8001/workspace/${user_id}/workspace`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
       if (resGetAllWS.status !== 200) return 'fail';
       const data = await resGetAllWS.json();
       setDataArr(data);
@@ -164,6 +169,17 @@ export default function Workflow() {
           <MyList>
             <p>List</p>
             {dataArr.map(el => {
+              const textLengthOverCut = (txt, len, lastTxt) => {
+                if (txt.length > len) {
+                  txt = txt.substr(0, len) + lastTxt;
+                }
+                return txt;
+              };
+              el.workspace_name = textLengthOverCut(
+                el.workspace_name,
+                11,
+                '...'
+              );
               return (
                 <div
                   key={el._id}

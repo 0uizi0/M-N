@@ -175,46 +175,27 @@ const MyInfoLeftWrap = styled.div`
   width: 40%;
 `;
 export default function CreateWorkspace() {
+  const user_idToken = localStorage.getItem('user_id');
+
   const navigation = useNavigate();
 
   const [userlist, setUserList] = useState([]); // 유저리스트
   const [checkedUserList, setCheckedUserList] = useState([]);
   const [etcData, setEtcData] = useState([]);
+  const user_id = localStorage.getItem('user_id');
 
   const workspaceName = useRef();
   const githubRepository = useRef();
 
-  const checkOnChange = (checked, id) => {
+  const checkOnChange = (checked, user_id) => {
     if (checked) {
-      setCheckedUserList(prev => [...prev, id]);
-      console.log(checkedUserList);
+      setCheckedUserList(prev => [...prev, user_id]);
     } else {
-      setCheckedUserList(checkedUserList.filter(el => el !== id));
+      setCheckedUserList(checkedUserList.filter(el => el !== user_id));
     }
   };
 
   const createData = {};
-
-  //유저리스트 불러오기
-  const getUserList = async () => {
-    axios.get('/data/userList.json').then(res => {
-      setUserList(res.data);
-      // console.log(userlist);
-    });
-    // const getUser = await fetch('http://localhost:8001/workspace/users', {
-    //   method: 'GET',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    // });
-    // if (!getUser) return alert('fail');
-    // return console.log(getUser.json());
-  };
-
-  useEffect(() => {
-    getUserList();
-  }, []);
-
   const categoryOnChange = e => {
     setEtcData({ ...etcData, workspace_category: e.target.value });
   };
@@ -232,7 +213,7 @@ export default function CreateWorkspace() {
     let arr = [];
     for (let i = 0; i < userlist.length; i++) {
       for (let j = 0; j < checkedUserList.length; j++) {
-        if (userlist[i].id == checkedUserList[j]) {
+        if (userlist[i].user_id === checkedUserList[j]) {
           arr.push(userlist[i]);
         }
       }
@@ -240,17 +221,16 @@ export default function CreateWorkspace() {
     return arr;
   };
   const searchUserList = result();
-
   async function setData() {
     try {
       createData.workspace_startDate = etcData.workspace_startDate;
       createData.workspace_endDate = etcData.workspace_endDate;
       createData.workspace_category = etcData.workspace_category;
       createData.workspace_type = etcData.workspace_type;
-
-      createData.member = searchUserList.map(el => el.user_id);
       createData.githubRepository = githubRepository.current.value;
       createData.workspace_name = workspaceName.current.value;
+      createData.member = searchUserList.map(el => el.user_id);
+      createData.member[Object.keys(createData.member).length] = user_id;
       if (!createData.workspace_category) {
         createData.workspace_category = 'FrontEnd';
       }
@@ -303,6 +283,26 @@ export default function CreateWorkspace() {
       console.error(err);
     }
   }
+  //유저리스트 불러오기
+  const getUserList = async () => {
+    // axios.get('/data/userList.json').then(res => {
+    //   console.log(userlist);
+    //   setUserList(res.data);
+    // });
+    console.log(user_idToken);
+    axios
+      .post('http://localhost:8001/user/userlist', { user_id: user_idToken })
+      .then(res => {
+        setUserList(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getUserList();
+  }, []);
   return (
     <MySectionContainer>
       <MyTitleWrap>
