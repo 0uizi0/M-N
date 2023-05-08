@@ -106,7 +106,9 @@ export default function SignUp() {
   const btnActive = () => {
     setIsDisabled(false);
   };
-
+  useEffect(() => {
+    if (confirmPW && confirmId && confirmEmail) btnActive();
+  }, [checkNum]);
   const add = () => {
     userData.user_email = `${userData.user_email_1}@${userData.user_email_2}`;
   };
