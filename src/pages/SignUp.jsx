@@ -166,6 +166,7 @@ export default function SignUp() {
         alert('다시 입력해주세요.');
       });
   };
+
   const [confirmEmail, setConfirmEmail] = useState(false);
   const emailCheck = async => {
     axios
@@ -198,6 +199,9 @@ export default function SignUp() {
         console.log(err);
       });
   };
+  useEffect(() => {
+    if (confirmPW && confirmId && confirmEmail) btnActive();
+  }, [checkNum, confirmPW, confirmId]);
   return (
     <div style={{ padding: '5% 25%' }}>
       {num === 0 && (
