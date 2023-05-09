@@ -133,6 +133,8 @@ const MyFreeButton = styled.button`
 
 export default function MainFir() {
   const isOpen = useRef(false);
+  const isLogin = useRef(false);
+  isLogin.current = localStorage.getItem('accessToken') !== null;
   useEffect(() => {
     isOpen.current = true;
   }, []);
@@ -172,9 +174,15 @@ export default function MainFir() {
           <MyH3>MeetNotes로 스마트하게 프로젝트를 관리해보세요!</MyH3>
           <MyP>개발자가 개발에만 집중할 수 있도록</MyP>
         </Fade>
-        <MyFreeButton onClick={() => navigation('/signup')}>
-          무료로 시작
-        </MyFreeButton>
+        {!isLogin.current ? (
+          <MyFreeButton onClick={() => navigation('/signup')}>
+            무료로 시작
+          </MyFreeButton>
+        ) : (
+          <MyFreeButton onClick={() => navigation('/workspace')}>
+            지금 시작하기
+          </MyFreeButton>
+        )}
       </MyDivContainer>
     </MyMainContainer>
   );
