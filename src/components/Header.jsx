@@ -56,6 +56,26 @@ const MyDiv = styled.div`
   display: flex;
 `;
 
+const MyEmptyDiv = styled.div`
+  width: 50px;
+`;
+
+const MyMenu = styled.div`
+  display: flex;
+  height: 100%;
+  padding: 15px;
+  cursor: pointer;
+  word-break: keep-all;
+
+  &:hover {
+    color: ${hoverMainColor};
+  }
+
+  & > div {
+    margin-right: 5px;
+  }
+`;
+
 const MyLoginButton = styled.button`
   padding: 10px 10px;
   width: 90px;
@@ -168,7 +188,29 @@ export default function Header() {
             </MyLogoTxtSec>
           </div>
         </MyMainLogo>
-
+        {!isLogin.current ? (
+          <> </>
+        ) : (
+          <MyDiv>
+            <MyMenu
+              onClick={() => {
+                navigation('/workspace');
+              }}
+            >
+              <div>워크스페이스</div>
+            </MyMenu>
+            <MyMenu>
+              <div>회의</div>
+            </MyMenu>
+            <MyMenu>
+              <div>보고서</div>
+            </MyMenu>
+            <MyMenu>
+              <div>기획</div>
+            </MyMenu>
+          </MyDiv>
+        )}
+        <MyEmptyDiv />
         <MyDiv>
           {!isLogin.current ? (
             <>
