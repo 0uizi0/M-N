@@ -28,6 +28,7 @@ const MyWorkspaceArea = styled.div`
 const MyTitle = styled.h2`
   font-size: 20px;
   margin-left: 15px;
+  cursor: pointer;
 `;
 
 const MyWorkspaceList = styled.div`
@@ -174,7 +175,13 @@ export default function Workflow() {
     <MyWorkspaceArea>
       {!loading ? (
         <MyWorkspaceList>
-          <MyTitle>Workspace</MyTitle>
+          <MyTitle
+            onClick={() => {
+              navigation('/workspace');
+            }}
+          >
+            Workspace
+          </MyTitle>
           <MyList>
             <p>List</p>
             {dataArr.map(el => {

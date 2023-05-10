@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import chat from '../../../assets/images/chat-icon.png';
@@ -115,11 +115,17 @@ const MyIcon6 = styled.img`
 
 export default function MainLast() {
   const navigation = useNavigate();
+  const isLogin = useRef(false);
+  isLogin.current = localStorage.getItem('accessToken') !== null;
 
   return (
     <MyContainer>
       <MyP>무료로 MeetNotes 사용해 보기</MyP>
-      <MyButton onClick={() => navigation('/signup')}>무료 체험</MyButton>
+      {!isLogin.current ? (
+        <MyButton onClick={() => navigation('/signup')}>무료 체험</MyButton>
+      ) : (
+        <MyButton onClick={() => navigation('/workspace')}>지금 시작</MyButton>
+      )}
       <MyIconContainer>
         <MyIcon1 src={chat} />
         <MyIcon2 src={group} />
