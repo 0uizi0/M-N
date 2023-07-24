@@ -1,5 +1,3 @@
-<!-- # Voluntain-2nd -->
-
 # Meet&Notes
 
 <div align="center">
@@ -8,17 +6,11 @@
 
 ## 팀원 소개
 
-| 구슬기 | 김은정 | 김호준 | 박성재 | 백진솔 |
-| :----: | :----: | :----: | :----: | :----: |
-
-| <img width="160px" src="https://avatars.githubusercontent.com/u/103307233?v=4"/>
-| <img width="160px" src="https://avatars.githubusercontent.com/u/102431281?v=4"/>
-| <img width="160px" src="https://avatars.githubusercontent.com/u/108918379?v=4"/>
-| <img width="160px" src="https://avatars.githubusercontent.com/u/71877347?v=4"/>
-| <img width="160px" src="https://avatars.githubusercontent.com/u/121254493?v=4"/> |
-|[@guseulgi](https://github.com/guseulgi)|[@0uizi0](https://github.com/0uizi0)|[@HOJOON07](https://github.com/HOJOON07)
-|[@qkrtjdwo5662](https://github.com/qkrtjdwo5662)|[@KARIS-SOL](https://github.com/KARIS-SOL)|
-|Front-end <br/> Design|Front-end |Front-end <br/> Back-end|Back-end|Front-end|
+|                                      구슬기                                      |                                      김은정                                      |                                      김호준                                      |                                     박성재                                      |                                      백진솔                                      |
+| :------------------------------------------------------------------------------: | :------------------------------------------------------------------------------: | :------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------: | :------------------------------------------------------------------------------: |
+| <img width="160px" src="https://avatars.githubusercontent.com/u/103307233?v=4"/> | <img width="160px" src="https://avatars.githubusercontent.com/u/102431281?v=4"/> | <img width="160px" src="https://avatars.githubusercontent.com/u/108918379?v=4"/> | <img width="160px" src="https://avatars.githubusercontent.com/u/71877347?v=4"/> | <img width="160px" src="https://avatars.githubusercontent.com/u/121254493?v=4"/> |
+|                     [@guseulgi](https://github.com/guseulgi)                     |                       [@0uizi0](https://github.com/0uizi0)                       |                     [@HOJOON07](https://github.com/HOJOON07)                     |                [@qkrtjdwo5662](https://github.com/qkrtjdwo5662)                 |                    [@KARIS-SOL](https://github.com/KARIS-SOL)                    |
+|                              Front-end <br/> Design                              |                                    Front-end                                     |                             Front-end <br/> Back-end                             |                                    Back-end                                     |                                    Front-end                                     |
 
 ## 프로젝트 소개
 
